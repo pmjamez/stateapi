@@ -1,4 +1,4 @@
-module stateapi/staetapi
+module stateapi/stateapi
 
 go 1.21.1
 
