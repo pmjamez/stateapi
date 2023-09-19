@@ -9,9 +9,8 @@ import (
 )
 
 type StateTax struct {
-	State string    `json:"state"`
-	Rates []float64 `json:"rates"`
-	// Amounts []float64 `json:"amounts"`
+	State   string    `json:"state"`
+	Rates   []float64 `json:"rates"`
 	Incomes []float64 `json:"incomes"`
 }
 
@@ -72,28 +71,6 @@ func getTaxRates(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, stateTaxRates)
 }
 
-// func getTaxRatesByState(c *gin.Context) {
-// 	// Get the state name from the request URL
-// 	state := c.Param("state")
-
-// 	// Find the tax rates for the specified state
-// 	var taxRates []float64
-// 	for _, tax := range stateTaxRates {
-// 		if tax.State == state {
-// 			taxRates = tax.Rates
-// 			break
-// 		}
-// 	}
-
-// 	// Check if tax rates were found
-// 	if len(taxRates) == 0 {
-// 		c.JSON(http.StatusNotFound, gin.H{"error": "State not found"})
-// 		return
-// 	}
-
-//		// Return the tax rates in indented JSON format
-//		c.IndentedJSON(http.StatusOK, gin.H{"state": state, "rates": taxRates})
-//	}
 func calculateStateTax(income float64, rates []float64, incomes []float64) float64 {
 	tax := 0.0
 	for i := 0; i < len(incomes); i++ {
